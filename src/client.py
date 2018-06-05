@@ -21,17 +21,41 @@ class Agent(Baseclient):
         self.send_data(data_dict)
 
 class SSH(SBaseclient):
+    def file_host(self):
+        f =open('nid','r')
+        data = f.read()
+        f.close()
+        if data:
+            return data
+
     def process(self):
         host_list = self.get_host_list()
         for host in host_list:
             data_dict = pack()
+            hostname = self.file_host()
+            if hostname:
+                data_dict['hostname'] = hostname
+            else:
+                data_dict['hostname'] = "xxxxxxx"
             self.send_data(data_dict)
 
 class Salt(SBaseclient):
+    def file_host(self):
+        f =open('nid','r')
+        data = f.read()
+        f.close()
+        if data:
+            return data
+
     def process(self):
         host_list = self.get_host_list()
         for host in host_list:
             data_dict = pack()
+            hostname = self.file_host()
+            if hostname:
+                data_dict['hostname'] = hostname
+            else:
+                data_dict['hostname'] = "xxxxxzxx"
             self.send_data(data_dict)
 
 
